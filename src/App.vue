@@ -17,7 +17,7 @@ const theme =   {
   }
 
 const fading = ref(false)
-const pokedex = ref(false)
+const pokedex = ref(true)
 const componentKey = ref(0)
 
 const event = {

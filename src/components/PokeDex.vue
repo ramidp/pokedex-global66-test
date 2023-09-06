@@ -134,7 +134,7 @@ const errorDisplay = ref(false)
                 <PokeFavs
                 v-if="!all"      
                 :theme="theme"
-                :pokemons="pokemons"     
+                :pokemons="pokemons"    
                 />                   
                 
 

@@ -6,6 +6,11 @@ const prop = defineProps({
     pokemons: Array,
 })
 
+const emit = defineEmits({
+    'pokemonDisplayClose': Function,
+})
+
+
 //  pokeFavsArray to storage all the info and to use in the future to store the variable fav.
 const pokeFavs = ref([])
 
@@ -22,13 +27,12 @@ onMounted( () => {
 </script>
 
 <template>
-    
+
 <div
 class="pokemon-div"
 v-for="(pokemon) in pokeFavs.filter(item => item.favs === true)"
 >    
-    <div 
-    
+    <div     
     :key="pokemon.name"  
     class="pokemon-item">
 
