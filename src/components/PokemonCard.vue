@@ -55,7 +55,7 @@ const addingToFavorites = () => {
 
     for (const item of pokeFavs.value) {
         if (item.name === prop.pokemon.name) {
-            item.favs = true;
+            item.favs = !item.favs;
             localStorage.setItem('pokeFavsArray', JSON.stringify(pokeFavs.value))
         }
     }
