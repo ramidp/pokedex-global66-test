@@ -49,7 +49,7 @@ onMounted( () => {
 });
 
 
-// Function to add the variable favs=true to the pokemon you want to add to your list
+// Function to add or remove the variable favs=true/false to the pokemon you want to add/remove to your list
 
 const addingToFavorites = () => {
 
@@ -170,7 +170,7 @@ class="pokemon-info-card">
         border-radius: 7.5px;
         z-index: 1000;
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1400px) {
             width: 75%;
             height: 80%;
         }

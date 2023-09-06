@@ -2,7 +2,7 @@
 import PokemonCard from './PokemonCard.vue'
 import PokeFavs from './PokeFavs.vue'
 
-import { onMounted, ref, computed} from 'vue'
+import { onMounted, ref, computed, onUpdated} from 'vue'
  
 // Props dn Emits
 
@@ -54,10 +54,11 @@ const selectingPokemon = (index) => {
 
 const searchedPokemon = ref('')
 
-const filteredPokemons = computed(() => {
+const filteredPokemons = computed(() => {    
     return pokeFavs2.value.filter(pokemon =>
     pokemon.name.toLowerCase().includes(searchedPokemon.value.toLowerCase())
-)
+    )
+  
 });
 
 // To display Pokemon Cards
@@ -69,6 +70,10 @@ const event = {
     'pokemonDisplayClose' : () => { pokemonDisplay.value = false},
     'refresh' : () => { emit('refresh') }
 }
+
+// Error in case you didn't get any pokemon by searching
+const errorDisplay = ref(false)
+
 
 </script>
 
@@ -136,7 +141,8 @@ const event = {
             </div>
         </Transition>
 
-        <Transition>
+        <Transition
+        >
             <div 
             v-if="filteredPokemons.length === 0"
             class="error-msg">
@@ -297,7 +303,18 @@ const event = {
             width: 100%;
             flex-direction: column;
             z-index: -1;
+            position: absolute;
             padding-top: 7vh;
+            animation: entrance;
+            animation-duration: 1s;
+            animation-delay: 0.2s;
+            filter: opacity(0);
+            animation-fill-mode: forwards;
+
+            @keyframes entrance {
+                0% { filter: opacity(0)}
+                100% { filter: opacity(1)}
+            }
 
             a {
                 text-decoration: none;
